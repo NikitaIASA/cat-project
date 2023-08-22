@@ -1,0 +1,33 @@
+.side-menu {
+  width: 775px;
+  position: sticky;
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    color: #1d1d1d;
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 58px;
+    margin-bottom: 10px;
+  }
+
+  &__description {
+    color: #8c8c8c;
+    font-size: 20px;
+    margin-bottom: 60px;
+  }
+
+  &__api {
+    color: #1d1d1d;
+    font-family: Jost;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+}

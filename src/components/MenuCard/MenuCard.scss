@@ -1,0 +1,42 @@
+.menu-card {
+  width: 138px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+
+  &__image-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 198px;
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  &__link {
+    display: block;
+    width: 138px;
+    color: #ff868e;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    background: #fff;
+    text-transform: uppercase;
+    transition: 0.3s linear;
+
+    &:hover {
+      background: #fbe0dc;
+    }
+
+    &.active {
+      background: #ff868e;
+      color: #fff;
+    }
+  }
+}
