@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import SideMenu from "../SideMenu";
 import Container from "../Container";
+import AppBar from "../AppBar";
 
 interface LayoutProps {}
 
@@ -11,6 +12,7 @@ export const Layout: FC<LayoutProps> = () => {
       <Container>
         <SideMenu />
         <main className="main">
+          <AppBar />
           <Outlet />
         </main>
       </Container>

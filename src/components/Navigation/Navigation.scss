@@ -1,0 +1,25 @@
+.navigation {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.3s linear;
+
+    &:hover {
+      background: #fbe0dc;
+    }
+
+  }
+  
+}
