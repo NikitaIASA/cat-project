@@ -10,12 +10,12 @@ export const routes = [
     },
     {
         id: 2,
-        image: dislike,
-        link: "/dislikes",
+        image: favourite,
+        link: "/favourites",
     },
     {
         id: 3,
-        image: favourite,
-        link: "/favourites",
+        image: dislike,
+        link: "/dislikes",
     },
 ];

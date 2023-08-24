@@ -1,0 +1,31 @@
+.vote-log {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  background: #f8f8f7;
+  padding: 15px 20px 15px 25px;
+  margin-top: 10px;
+
+  &__time {
+    color: #1d1d1d;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    background: #fff;
+    margin-right: 20px;
+  }
+
+  &__text {
+    color: #8c8c8c;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    span {
+      color: #1d1d1d;
+      font-weight: 500;
+    }
+  }
+}
