@@ -43,10 +43,15 @@ export const Voting: FC<VotingProps> = ({ data }) => {
     addVoteMessage("favourite");
   }
 
+  const imageUrl = data.url;
+  const parts = imageUrl.split("/");
+  const codeWithExtension = parts[parts.length - 1]; 
+    const code = codeWithExtension.split(".")[0];
+
   const addVoteMessage = (action: string) => {
     const newVoteMessage = {
       time: getCurrentTime(),
-      imageId: data.id,
+      imageId: code,
       action,
     };
 
