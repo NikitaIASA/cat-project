@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCatDto } from "../../api/dto/getCats.dto";
 import { GetBreedsDto } from "../../api/dto/getBreeds.dto";
@@ -25,6 +25,16 @@ export const Breeds: FC<BreedsProps> = ({
   setLimit,
   setSorting,
 }) => {
+  const [hoveredCatBreed, setHoveredCatBreed] = useState<string | null>(null);
+
+  const handleMouseEnter = (breed: string) => {
+    setHoveredCatBreed(breed);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCatBreed(null);
+  };
+
   return (
     <div className="breeds">
       <div className="breeds__flex">
@@ -115,7 +125,19 @@ export const Breeds: FC<BreedsProps> = ({
       </div>
       <div className="breeds__images">
         {data &&
-          data.map((image) => <img key={image.id} src={image.url} alt="Cat" />)}
+          data.map((image) => (
+            <div
+              className="breeds__image-container"
+              key={image.id}
+              onMouseEnter={() => handleMouseEnter(image?.breeds[0]?.name)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <img key={image.id} src={image.url} alt="Cat" />
+              {hoveredCatBreed === image?.breeds[0]?.name && (
+                <div className="breeds__name">{image?.breeds[0]?.name ? image?.breeds[0]?.name : "Just cute cat"}</div>
+              )}
+            </div>
+          ))}
       </div>
     </div>
   );
