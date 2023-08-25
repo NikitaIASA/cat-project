@@ -5,6 +5,7 @@ import { HomePage } from "./pages/Home";
 import { VotingPage } from "./pages/Voting";
 import { BreedsPage } from "./pages/Breeds";
 import { GalleryPage } from "./pages/Gallery";
+import { CatPage } from "./pages/CatProfile";
 
 export const App: FC = () => {
   return (
@@ -13,6 +14,7 @@ export const App: FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/voting" element={<VotingPage />} />
         <Route path="/breeds" element={<BreedsPage />} />
+        <Route path="/breeds/:id" element={<CatPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
       </Route>
     </Routes>

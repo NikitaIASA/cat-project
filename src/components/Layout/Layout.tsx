@@ -4,6 +4,8 @@ import SideMenu from "../SideMenu";
 import Container from "../Container";
 import AppBar from "../AppBar";
 
+import "./Layout.scss";
+
 interface LayoutProps {}
 
 export const Layout: FC<LayoutProps> = () => {
