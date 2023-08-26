@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../core/api';
 import { GetRandomCatDto } from './dto/getRandomCat.dto';
 
@@ -46,17 +46,25 @@ export const useRandomCat = () => {
 };
 
 export const useVoteCat = () => {
+    const queryClient = useQueryClient();
+
     const voteMutation = useMutation(({ imageId, value }: voteCatParams) =>
         voteCat({ imageId, value })
     );
+    queryClient.invalidateQueries(['getLikes']);
+
 
     return voteMutation;
 };
 
 export const useAddFavourite = () => {
+    const queryClient = useQueryClient();
+
     const addFavoriteMutation = useMutation(({ imageId }: AddFavoriteParams) =>
         addFavorite({ imageId })
     );
+
+    queryClient.invalidateQueries(['addFavorite']);
 
     return addFavoriteMutation;
 };
