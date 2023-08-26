@@ -1,0 +1,47 @@
+.favourites {
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 10px;
+
+  &__flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 25px 0;
+  }
+
+  &__arrow-back {
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #fbe0dc;
+    cursor: pointer;
+  }
+
+  &__title {
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    padding: 5px 30px;
+    background: #ff868e;
+  }
+
+  &__image {
+    width: 300px;
+    height: 300px;
+  }
+  
+}
