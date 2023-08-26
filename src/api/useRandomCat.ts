@@ -24,7 +24,7 @@ export const getRandomCat = async () => {
 export const voteCat = async ({ imageId, value }: voteCatParams) => {
     await api.post('https://api.thecatapi.com/v1/votes', {
         image_id: imageId,
-        sub_id: "mytestkey",
+        sub_id: "mytestkey2",
         value: value,
     })
 }
@@ -34,7 +34,7 @@ const addFavorite = async ({ imageId }: AddFavoriteParams) => {
         'https://api.thecatapi.com/v1/favourites',
         {
             image_id: imageId,
-            sub_id: 'mytestkey',
+            sub_id: 'mytestkey2',
         }
     );
 };

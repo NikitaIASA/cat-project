@@ -7,6 +7,8 @@ import { BreedsPage } from "./pages/Breeds";
 import { GalleryPage } from "./pages/Gallery";
 import { CatPage } from "./pages/CatProfile";
 import { FavouritePage } from "./pages/Favourite";
+import { LikesPage } from "./pages/Likes";
+import { DislikesPage } from "./pages/Dislikes";
 
 export const App: FC = () => {
   return (
@@ -18,6 +20,8 @@ export const App: FC = () => {
         <Route path="/breeds/:id" element={<CatPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/favourites" element={<FavouritePage />} />
+        <Route path="/likes" element={<LikesPage />} />
+        <Route path="/dislikes" element={<DislikesPage />} />
       </Route>
     </Routes>
   );

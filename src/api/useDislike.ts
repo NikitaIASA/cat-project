@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from '../core/api';
 import { getVoteDashboardDto } from './dto/getVoteDashboardDto';
 
-const getFavorites = async () => {
+const getDislikes = async () => {
     const { data } = await api.get<getVoteDashboardDto>(
-        'https://api.thecatapi.com/v1/favourites',
+        'https://api.thecatapi.com/v1/votes',
         {
             params: {
                 sub_id: 'mytestkey2',
@@ -12,12 +12,13 @@ const getFavorites = async () => {
         }
     );
 
-    return data;
+    const filteredData = data.filter(item => item.value === 0);
+
+    return filteredData;
 };
 
-
-export const useFavoriteData = () => {
-    const { data, isLoading, isError } = useQuery(['getFavorites'], getFavorites);
+export const useDislikeData = () => {
+    const { data, isLoading, isError } = useQuery(['getDislikes'], getDislikes);
 
     return { data, isLoading, isError };
 };

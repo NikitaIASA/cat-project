@@ -1,24 +1,26 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { GetFavoriteDto } from "../../api/dto/getFavourite.dto";
-import { InfiniteData } from "@tanstack/react-query"; // Make sure to import this
+import { useLocation } from 'react-router-dom';
+import { getVoteDashboardDto } from "../../api/dto/getVoteDashboardDto";
 
-import "./Favourites.scss";
+import "./VoteDashboard.scss";
 
-interface FavouritsProps {
-  data: InfiniteData<GetFavoriteDto>;
-  fetchNextPage: () => void;
+interface VoteDashboardProps {
+  data: getVoteDashboardDto;
 }
 
-export const Favourites: FC<FavouritsProps> = ({ data, fetchNextPage }) => {
-  const navigate = useNavigate();
+export const VoteDashboard: FC<VoteDashboardProps> = ({ data }) => {
+  const location = useLocation();
+  const pageTitle = location.pathname.substring(1);
 
+  const navigate = useNavigate();
+  
   return (
-    <div className="favourites">
-      <div className="favourites__navigation">
+    <div className="vote-dashboard">
+      <div className="vote-dashboard__navigation">
         <svg
           onClick={() => navigate(-1)}
-          className="favourites__arrow-back"
+          className="vote-dashboard__arrow-back"
           xmlns="http://www.w3.org/2000/svg"
           width="20"
           height="20"
@@ -37,23 +39,14 @@ export const Favourites: FC<FavouritsProps> = ({ data, fetchNextPage }) => {
             </clipPath>
           </defs>
         </svg>
-        <h2 className="favourites__title">favourites</h2>
+        <h2 className="vote-dashboard__title">{pageTitle}</h2>
       </div>
-      <div className="favourites__images">
-        {data.pages.map((page) => {
-          return page.map((item) => (
-            <img
-              className="favourites__image"
-              key={item.id}
-              src={item.image.url}
-              alt=""
-            />
-          ));
-        })}
+      <div className="vote-dashboard__images">
+        {data && data.map((item) => (
+            <img className="vote-dashboard__image" key={item.id} src={item.image.url} alt={item.image_id} />
+        ))}
       </div>
-      {data.pages[data.pages.length - 1].length === 10 && (
-        <button onClick={() => fetchNextPage()}>Load more</button>
-      )}
+
     </div>
   );
 };

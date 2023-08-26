@@ -1,9 +1,9 @@
 import { FC } from "react";
-import Favourites from "../components/Favourites";
+import VoteDashboard from "../components/VoteDashboard";
 import { useFavoriteData } from "../api/useFavouriteData";
 
 export const FavouritePage: FC = () => {
-  const { data, isLoading, fetchNextPage } = useFavoriteData();
+  const { data, isLoading } = useFavoriteData();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -13,5 +13,5 @@ export const FavouritePage: FC = () => {
     return <div>No favorite cats :(</div>;
   }
 
-  return <Favourites data={data} fetchNextPage={fetchNextPage} />;
+  return <VoteDashboard data={data} />;
 };
