@@ -1,10 +1,28 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSearchContext } from "../../Context/SearchProvider";
 
-import "./Search.scss";
+import "./SearchInput.scss";
 
-interface SearchProps {}
+export const SearchInput: FC = () => {
+  const { searchValue, setSearchValue } = useSearchContext();
+  const navigate = useNavigate();
 
-export const Search: FC<SearchProps> = () => {
+  const handleSearchInputChange = (newSearchValue: string) => {
+    setSearchValue(newSearchValue);
+    if (newSearchValue.trim() === "") {
+      navigate("/");
+    } else {
+      navigate(`/search?term=${newSearchValue}`);
+    }
+  };
+
+  useEffect(() => {
+    if (location.pathname !== "/search") {
+      setSearchValue("");
+    }
+  }, [location.pathname, setSearchValue]);
+
   return (
     <div className="search">
       <svg
@@ -28,22 +46,12 @@ export const Search: FC<SearchProps> = () => {
         </defs>
       </svg>
       <input
-        // ref={inputRef}
-        // value={value}
-        // onChange={onChangeInput}
         className="search__input"
+        type="text"
+        value={searchValue || ""}
+        onChange={(e) => handleSearchInputChange(e.target.value)}
         placeholder="Search for breeds by name"
       />
-      {/* {value && (
-        <svg
-          onClick={onClear}
-          className={classes.clearIcon}
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
-        </svg>
-      )} */}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Search from "../Search";
+import Search from "../SearchInput";
 import Navigation from "../Navigation";
 
 import "./AppBar.scss";
