@@ -1,3 +1,5 @@
+@import "../../scss/index.scss";
+
 .side-menu {
   width: 446px;
   position: sticky;
@@ -9,7 +11,7 @@
   }
 
   &__title {
-    color: #1d1d1d;
+    color: $dark-grey;
     font-size: 44px;
     font-weight: 500;
     line-height: 58px;
@@ -17,13 +19,13 @@
   }
 
   &__description {
-    color: #8c8c8c;
+    color: $light-grey;
     font-size: 20px;
     margin-bottom: 60px;
   }
 
   &__api {
-    color: #1d1d1d;
+    color: $dark-grey;
     font-family: Jost;
     font-size: 20px;
     font-weight: 500;

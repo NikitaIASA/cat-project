@@ -1,5 +1,7 @@
+@import "../../scss/index.scss";
+
 .voting {
-  background: #fff;
+  background: $white;
   padding: 20px;
   border-radius: 20px;
   margin-top: 10px;
@@ -17,12 +19,12 @@
     height: 40px;
     padding: 10px;
     border-radius: 10px;
-    background: #fbe0dc;
+    background: $light-pink;
     cursor: pointer;
   }
 
   &__title {
-    color: #fff;
+    color: $white;
     text-align: center;
     font-size: 20px;
     font-weight: 500;
@@ -30,7 +32,7 @@
     letter-spacing: 2px;
     border-radius: 10px;
     padding: 5px 30px;
-    background: #ff868e;
+    background: $pink;
   }
 
   &__container {

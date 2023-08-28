@@ -1,8 +1,7 @@
+@import "../../scss/index.scss";
+
 .menu-card {
   width: 138px;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
 
   &__image-block {
     display: flex;
@@ -17,7 +16,7 @@
   &__link {
     display: block;
     width: 138px;
-    color: #ff868e;
+    color: $pink;
     text-align: center;
     padding: 10px 0;
     font-size: 12px;
@@ -26,17 +25,17 @@
     line-height: 16px;
     letter-spacing: 2px;
     border-radius: 10px;
-    background: #fff;
+    background: $white;
     text-transform: uppercase;
     transition: 0.3s linear;
 
     &:hover {
-      background: #fbe0dc;
+      background: $light-pink;
     }
 
     &.active {
-      background: #ff868e;
-      color: #fff;
+      background: $pink;
+      color: $white;
     }
   }
 }

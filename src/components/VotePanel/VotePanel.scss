@@ -1,11 +1,13 @@
+@import "../../scss/index.scss";
+
 .vote-panel {
   position: absolute;
   bottom: -35px;
   left: 50%;
   transform: translateX(-50%);
-  border: 5px solid #fff;
+  border: 5px solid $white;
   border-radius: 25px;
-  background: #fff;
+  background: $white;
   &__list {
     display: flex;
     gap: 5px;
@@ -33,7 +35,7 @@
   }
 
   &__image * {
-    fill: #fff;
+    fill: $white;
   }
   
 }

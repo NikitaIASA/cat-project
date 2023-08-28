@@ -1,3 +1,5 @@
+@import "../../scss/index.scss";
+
 .upload-modal {
   position: fixed;
   top: 0;
@@ -25,20 +27,20 @@
   }
 
   &__title {
-    color: #1d1d1d;
+    color: $dark-grey;
     font-size: 36px;
     font-weight: 500;
     margin-bottom: 10px;
   }
 
   &__guide {
-    color: #8c8c8c;
+    color: $light-grey;
     font-size: 20px;
     line-height: 30px;
     margin-bottom: 40px;
 
     span {
-      color: #ff868e;
+      color: $pink;
     }
   }
 
@@ -50,7 +52,7 @@
   }
 
   &__selected-file {
-    color: #8c8c8c;
+    color: $light-grey;
     font-size: 20px;
     line-height: 30px;
     text-align: center;
@@ -63,20 +65,20 @@
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    border: 2px dashed #fbe0dc;
-    background: #fff;
+    border: 2px dashed $light-pink;
+    background: $white;
     background-image: url("../../assets/image-bg.svg");
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &__select {
-    color: #8c8c8c;
+    color: $light-grey;
     font-size: 20px;
     line-height: 30px;
 
     span {
-      color: #1d1d1d;
+      color: $dark-grey;
       font-weight: 500;
     }
   }
@@ -88,9 +90,9 @@
     margin-top: 20px;
     width: 100%;
     padding: 20px;
-    background: #fff;
+    background: $white;
     border-radius: 10px;
-    color: #8c8c8c;
+    color: $light-grey;
     font-size: 16px;
     line-height: 24px;
   }
@@ -98,14 +100,14 @@
   &__button {
     margin-top: 20px;
     padding: 12px 30px;
-    color: #fff;
+    color: $white;
     font-size: 12px;
     font-weight: 500;
     line-height: 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
     border-radius: 10px;
-    background: #ff868e;
+    background: $pink;
     outline: none;
     border: none;
   }
