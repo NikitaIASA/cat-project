@@ -1,6 +1,6 @@
 export type getCatDto = Cat[];
  
-interface Cat {
+export interface Cat {
   breeds: Breed[];
   id: string;
   url: string;
@@ -8,7 +8,7 @@ interface Cat {
   height: number;
 }
 
-interface Breed {
+export interface Breed {
   weight: Weight;
   id: string;
   name: string;

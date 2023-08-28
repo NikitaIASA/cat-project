@@ -9,6 +9,17 @@ import "./SearchResult.scss";
 const SearchResultsPage: FC = () => {
   const { data: breeds } = useBreedData();
   const { searchValue } = useSearchContext();
+
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
   const [filteredBreeds, setFilteredBreeds] = useState<GetBreedsDto>([]);
 
   useEffect(() => {
@@ -49,18 +60,29 @@ const SearchResultsPage: FC = () => {
         </Link>
         <h2 className="search-result__title">Search</h2>
       </div>
+      <p className="search-result__text">
+        Search results for: <span>{searchValue}</span>
+      </p>
       <div className="search-result__images">
-        <p className="search-result__text">
-          Search results for: <span>{searchValue}</span>
-        </p>
         {filteredBreeds.length > 0 ? (
           filteredBreeds.map((item) => (
-            <img
-              className="search-result__image"
-              key={item.id}
-              src={item.image?.url}
-              alt={item.name}
-            />
+            <div
+              className="breed-card__image-container"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <img
+                className="search-result__image"
+                key={item.id}
+                src={item.image?.url}
+                alt={item.name}
+              />
+              {hovered && (
+                <div className="breed-card__name">
+                  {item.name || "Just cute cat"}
+                </div>
+              )}
+            </div>
           ))
         ) : (
           <p className="search-result__no-results">No Cat found</p>

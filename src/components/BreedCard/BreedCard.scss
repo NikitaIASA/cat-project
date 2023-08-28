@@ -1,0 +1,116 @@
+.breed-card {
+  &__name {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translate(-50%, -50%);
+    color: #ff868e;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    width: 224px;
+    padding: 5px 42px;
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  &__image-container {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__name {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ff868e;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+  }
+
+  &__image-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 134, 142, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &__image-container:hover &__name {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__image-container:hover::before {
+    opacity: 1;
+  }
+}
+
+.breed-card:nth-child(10n + 1) {
+  width: 200px;
+  height: 300px;
+  grid-row: span 2;
+  grid-column: span 1;
+}
+
+.breed-card:nth-child(10n + 1) img {
+  width: 200px;
+  height: 300px;
+}
+
+.breed-card:nth-child(10n + 8) {
+  width: 200px;
+  height: 300px;
+  grid-row: span 2;
+  grid-column: span 1;
+}
+
+.breed-card:nth-child(10n + 8) img {
+  width: 200px;
+  height: 300px;
+}
+
+.breed-card:nth-child(10n + 4) {
+  width: 420px;
+  height: 300px;
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+.breed-card:nth-child(10n + 4) img {
+  width: 420px;
+  height: 300px;
+}
+
+.breed-card:nth-child(10n + 9) {
+  width: 420px;
+  height: 300px;
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+.breed-card:nth-child(10n + 9) img {
+  width: 420px;
+  height: 300px;
+}
+
+.breed-card {
+  width: 200px;
+  height: 140px;
+}
+
+.breed-card img {
+  width: 200px;
+  height: 140px;
+  object-fit: cover;
+}

@@ -66,4 +66,36 @@
     padding: 18px 20px;
   }
 
+  &__images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  &__image:nth-child(10n + 1) {
+    width: 200px;
+    height: 300px;
+    grid-row: span 2;
+    grid-column: span 1;
+  }
+
+  &__image:nth-child(10n + 4) {
+    width: 420px;
+    height: 300px;
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+
+  &__image:nth-child(10n + 9) {
+    width: 420px;
+    height: 300px;
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+
+  &__image {
+    width: 200px;
+    height: 140px;
+    object-fit: cover;
+  }
 }

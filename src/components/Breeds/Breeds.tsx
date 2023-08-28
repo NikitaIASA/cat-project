@@ -1,9 +1,10 @@
-import { FC, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { getCatDto } from "../../api/dto/getCats.dto";
 import { GetBreedsDto } from "../../api/dto/getBreeds.dto";
 
 import "./Breeds.scss";
+import { BreedList } from "../BreedList/BreedList";
 
 interface BreedsProps {
   data: getCatDto;
@@ -26,16 +27,7 @@ export const Breeds: FC<BreedsProps> = ({
   setSorting,
 }) => {
   const navigate = useNavigate();
-  const [hoveredCatBreed, setHoveredCatBreed] = useState<string | null>(null);
-
-  const handleMouseEnter = (breed: string) => {
-    setHoveredCatBreed(breed);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredCatBreed(null);
-  };
-
+  
   return (
     <div className="breeds">
       <div className="breeds__flex">
@@ -123,27 +115,7 @@ export const Breeds: FC<BreedsProps> = ({
           </svg>
         </div>
       </div>
-      <div className="breeds__images">
-        {data &&
-          data.map((image) => (
-            <Link to={`./${image.id}`} key={image.id}>
-              <div
-                className="breeds__image-container"
-                onMouseEnter={() => handleMouseEnter(image?.breeds[0]?.name)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <img key={image.id} src={image.url} alt="Cat" />
-                {hoveredCatBreed === image?.breeds[0]?.name && (
-                  <div className="breeds__name">
-                    {image?.breeds[0]?.name
-                      ? image?.breeds[0]?.name
-                      : "Just cute cat"}
-                  </div>
-                )}
-              </div>
-            </Link>
-          ))}
-      </div>
+      <BreedList data={data} />
     </div>
   );
 };

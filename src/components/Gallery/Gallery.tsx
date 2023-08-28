@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import UploadModal from "../UploadModal";
+import { BreedList } from "../BreedList/BreedList";
 import { getCatDto } from "../../api/dto/getCats.dto";
 import { GetBreedsDto } from "../../api/dto/getBreeds.dto";
 import { useNavigate } from "react-router-dom";
@@ -166,17 +167,7 @@ export const Gallery: FC<GalleryProps> = ({
           />
         </svg>
       </div>
-      <div className="gallery__images">
-        {data &&
-          data.map((item) => (
-            <img
-              className="gallery__image"
-              key={item.id}
-              src={item?.url}
-              alt={item.id}
-            />
-          ))}
-      </div>
+      <BreedList data={data} />
       {isModalOpen && <UploadModal onCancel={handleCancel} />}
     </div>
   );

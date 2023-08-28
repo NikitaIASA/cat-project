@@ -9,8 +9,6 @@ export const CatPage: FC<CatPageProps> = () => {
   const { id } = useParams();
   const { data, isLoading, isError } = useSingleCatData({ id: id || "" });
 
-  console.log(data);
-
   if (isLoading) {
     return <p>Loading....</p>;
   }

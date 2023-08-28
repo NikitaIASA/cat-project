@@ -1,6 +1,6 @@
 export type GetBreedsDto = Breed[];
 
-interface Breed {
+export interface Breed {
   weight: Weight;
   id: string;
   name: string;
