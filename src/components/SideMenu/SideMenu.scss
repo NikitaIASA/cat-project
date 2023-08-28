@@ -2,7 +2,9 @@
 
 .side-menu {
   width: 446px;
+  height: 100%;
   position: sticky;
+  top: 20px;
   &__logo {
     display: flex;
     align-items: center;
