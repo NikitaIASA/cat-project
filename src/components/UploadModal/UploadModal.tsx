@@ -1,5 +1,4 @@
 import { FC, useRef, useState, ChangeEvent, DragEvent } from "react";
-import { uploadImage } from "../../api/useUploadData";
 
 import "./UploadModal.scss";
 
@@ -16,7 +15,9 @@ export const UploadModal: FC<UploadModalProps> = ({ onCancel }) => {
   const [image, setImage] = useState<Image | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [uploadStatus, setUploadStatus] = useState<"idle" | "uploading" | "success" | "error">("idle");
+  const [uploadStatus, setUploadStatus] = useState<
+    "idle" | "uploading" | "success" | "error"
+  >("idle");
 
   const selectFile = () => {
     if (fileInputRef.current) {
@@ -58,19 +59,39 @@ export const UploadModal: FC<UploadModalProps> = ({ onCancel }) => {
     }
   };
 
-  const upload = async () => {
+  async function upload() {
     if (image) {
       setUploadStatus("uploading");
 
-      const status = await uploadImage(image);
+      const formData = new FormData();
+      formData.append("file", image.file);
 
-      if (status === "success") {
-        setUploadStatus("success");
-      } else {
+      try {
+        const response = await fetch(
+          "https://api.thecatapi.com/v1/images/upload",
+          {
+            method: "POST",
+            body: formData,
+            headers: {
+              "x-api-key": import.meta.env.VITE_API_KEY
+            },
+          }
+        );
+
+        if (response.status === 201) {
+          setUploadStatus("success");
+          setImage(null)
+        } else if (response.status === 400) {
+          setUploadStatus("error");
+        } else {
+          setUploadStatus("error");
+        }
+      } catch (error) {
+        console.error("Error uploading image:", error);
         setUploadStatus("error");
       }
     }
-  };
+  }
 
   const handleModalClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
@@ -137,7 +158,7 @@ export const UploadModal: FC<UploadModalProps> = ({ onCancel }) => {
             </button>
           )}
 
-          {image && uploadStatus === "success" && (
+          {uploadStatus === "success" && (
             <div className="upload-modal__status">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

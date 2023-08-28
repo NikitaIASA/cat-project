@@ -9,7 +9,7 @@ import { CatPage } from "./pages/CatProfile";
 import { FavouritePage } from "./pages/Favourite";
 import { LikesPage } from "./pages/Likes";
 import { DislikesPage } from "./pages/Dislikes";
-import SearchResultsPage from "./components/SearchResult/SearchResult";
+import SearchResultsPage from "./components/SearchResult";
 
 export const App: FC = () => {
   return (

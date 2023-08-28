@@ -67,18 +67,18 @@ const SearchResultsPage: FC = () => {
         {filteredBreeds.length > 0 ? (
           filteredBreeds.map((item) => (
             <div
-              className="breed-card__image-container"
+              key={item.id}
+              className="search-result__image-container"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <img
                 className="search-result__image"
-                key={item.id}
                 src={item.image?.url}
                 alt={item.name}
               />
               {hovered && (
-                <div className="breed-card__name">
+                <div className="search-result__name">
                   {item.name || "Just cute cat"}
                 </div>
               )}

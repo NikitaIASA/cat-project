@@ -45,9 +45,10 @@
   }
 
   &__image {
-    width: 558.14px;
+    width: 550px;
     height: 280px;
-    border-radius: 10px;
+    padding: 0 25px;
+    border-radius: 20px;
     object-fit: cover;
   }
 
@@ -61,6 +62,7 @@
 
   &__drag-area {
     height: 320px;
+    width: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,6 +112,7 @@
     background: $pink;
     outline: none;
     border: none;
+    cursor: pointer;
   }
 }
 

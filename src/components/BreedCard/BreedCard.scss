@@ -1,27 +1,13 @@
 @import "../../scss/index.scss";
 
 .breed-card {
-  &__name {
-    position: absolute;
-    left: 50%;
-    bottom: 10px;
-    transform: translate(-50%, -50%);
-    color: $pink;
-    text-align: center;
-    font-size: 16px;
-    line-height: 24px;
-    width: 224px;
-    padding: 5px 42px;
-    border-radius: 10px;
-    background: $white;
-  }
-
   &__image-container {
     position: relative;
     cursor: pointer;
   }
 
   &__name {
+    width: 180px;
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -33,7 +19,10 @@
     line-height: 24px;
     visibility: hidden;
     opacity: 0;
+    border-radius: 20px;
     transition: visibility 0.3s, opacity 0.3s;
+    padding: 5px 42px;
+    background: $white;
   }
 
   &__image-container::before {

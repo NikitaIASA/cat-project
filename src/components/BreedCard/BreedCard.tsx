@@ -26,7 +26,7 @@ export const BreedCard: FC<BreedCardProps> = ({ image }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <img src={image.url} alt="Breed" />
+        <img className="breed-card__image" src={image.url} alt="Breed" />
         {hovered && (
           <div className="breed-card__name">
             {image?.breeds[0]?.name || "Just cute cat"}
