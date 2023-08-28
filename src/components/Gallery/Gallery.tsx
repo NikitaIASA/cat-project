@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
+import UploadModal from "../UploadModal";
 import { getCatDto } from "../../api/dto/getCats.dto";
 import { GetBreedsDto } from "../../api/dto/getBreeds.dto";
 import { useNavigate } from "react-router-dom";
@@ -35,31 +36,65 @@ export const Gallery: FC<GalleryProps> = ({
   setPage,
 }) => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    isModalOpen && document.body.classList.add("modal-open");
+    !isModalOpen && document.body.classList.remove("modal-open");
+  }, [isModalOpen]);
+
   return (
     <div className="gallery">
       <div className="gallery__navigation">
-        <svg
-          onClick={() => navigate(-1)}
-          className="gallery__arrow-back"
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
+        <div className="gallery__flex">
+          <svg
+            onClick={() => navigate(-1)}
+            className="gallery__arrow-back"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <g clipPath="url(#clip0_1_85)">
+              <path
+                d="M4.70999 10.9901L13.3097 19.5896C13.8567 20.1369 14.7437 20.1369 15.2905 19.5896C15.8373 19.0427 15.8373 18.1558 15.2905 17.6091L7.68104 9.99988L15.2902 2.39096C15.8371 1.84391 15.8371 0.957107 15.2902 0.410284C14.7434 -0.136761 13.8565 -0.136761 13.3095 0.410284L4.70977 9.00985C4.43635 9.28339 4.2998 9.64153 4.2998 9.99983C4.2998 10.3583 4.43662 10.7167 4.70999 10.9901Z"
+                fill="#FF868E"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_1_85">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          <h2 className="gallery__title">Gallery</h2>
+        </div>
+
+        <button
+          className="gallery__upload-button"
+          onClick={() => setIsModalOpen(true)}
         >
-          <g clipPath="url(#clip0_1_85)">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
             <path
-              d="M4.70999 10.9901L13.3097 19.5896C13.8567 20.1369 14.7437 20.1369 15.2905 19.5896C15.8373 19.0427 15.8373 18.1558 15.2905 17.6091L7.68104 9.99988L15.2902 2.39096C15.8371 1.84391 15.8371 0.957107 15.2902 0.410284C14.7434 -0.136761 13.8565 -0.136761 13.3095 0.410284L4.70977 9.00985C4.43635 9.28339 4.2998 9.64153 4.2998 9.99983C4.2998 10.3583 4.43662 10.7167 4.70999 10.9901Z"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M7.86601 0L12.2355 4.03339L11.4129 4.92452L8.48919 2.22567V12.3618H7.27645V2.30464L4.67336 4.90772L3.81583 4.05019L7.86601 0ZM1.21274 14.7873V7.51081H0V16H15.7656V7.51081H14.5529V14.7873H1.21274Z"
               fill="#FF868E"
             />
-          </g>
-          <defs>
-            <clipPath id="clip0_1_85">
-              <rect width="20" height="20" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
-        <h2 className="gallery__title">Gallery</h2>
+          </svg>
+          Upload
+        </button>
       </div>
       <div className="gallery__options">
         <select
@@ -142,6 +177,7 @@ export const Gallery: FC<GalleryProps> = ({
             />
           ))}
       </div>
+      {isModalOpen && <UploadModal onCancel={handleCancel} />}
     </div>
   );
 };

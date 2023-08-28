@@ -3,8 +3,12 @@
 
 body {
   background: #f8f8f7;
-  font-family: "Jost", sans-serif;
+  font-family: Jost, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
+}
+
+.modal-open {
+  overflow: hidden;
 }
